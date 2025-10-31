@@ -1,0 +1,115 @@
+/* static/style.css  */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f9ff;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #083d77;
+  margin-bottom: 20px;
+}
+
+/* Booking form card */
+.booking-form {
+  background: white;
+  padding: 26px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+}
+
+.booking-form h2 {
+  margin-bottom: 16px;
+  color: #083d77;
+}
+
+.booking-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #e6eef8;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Primary action button styling (polished gradient + rounded) */
+.booking-form button {
+  background: linear-gradient(90deg, #1e90ff, #00bfff);
+  color: white;
+  padding: 12px 35px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 6px 14px rgba(30,144,255,0.12);
+}
+
+.booking-form button:hover {
+  background: linear-gradient(90deg, #0073e6, #0099ff);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(30,144,255,0.14);
+}
+
+/* Tickets list */
+.tickets-list h2 {
+  margin-bottom: 12px;
+  color: #083d77;
+}
+
+.ticket {
+  background: white;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border-left: 4px solid #1e90ff;
+}
+
+.ticket h3 {
+  color: #083d77;
+  margin-bottom: 8px;
+}
+
+.ticket button {
+  background: #e74c3c;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.ticket button:hover {
+  background: #c0392b;
+}
+
+/* Footer (added for branding) */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #555;
+  font-size: 14px;
+  padding: 18px 0;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 640px) {
+  .container { padding: 14px; margin: 14px; }
+  .booking-form { padding: 18px; }
+  .booking-form button { width: 100%; padding: 12px; border-radius: 10px; }
+  .ticket { padding: 14px; }
+}

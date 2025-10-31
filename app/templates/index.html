@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking System — DevOps Assignment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎫 Ticket Booking — DevOps Assignment</h1>
+        
+        <div class="booking-form">
+            <h2>Book Your Tickets</h2>
+            <form id="bookingForm">
+                <input type="text" id="event" placeholder="Event Name" required>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="number" id="quantity" placeholder="Number of Tickets" min="1" required>
+                <button type="submit">Book Tickets</button>
+            </form>
+        </div>
+
+        <div class="tickets-list">
+            <h2>Booked Tickets</h2>
+            <div id="ticketsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                event: document.getElementById('event').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                quantity: parseInt(document.getElementById('quantity').value)
+            };
+
+            try {
+                const response = await fetch('/api/tickets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Ticket booked successfully!');
+                    loadTickets();
+                    document.getElementById('bookingForm').reset();
+                } else {
+                    const err = await response.text();
+                    console.error('Server error:', err);
+                    alert('Failed to book ticket.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Network error.');
+            }
+        });
+
+        async function loadTickets() {
+            try {
+                const response = await fetch('/api/tickets');
+                const tickets = await response.json();
+                
+                const container = document.getElementById('ticketsContainer');
+                container.innerHTML = '';
+                
+                tickets.forEach(ticket => {
+                    const ticketElement = document.createElement('div');
+                    ticketElement.className = 'ticket';
+                    ticketElement.innerHTML = `
+                        <h3>${ticket.event}</h3>
+                        <p><strong>Name:</strong> ${ticket.name}</p>
+                        <p><strong>Email:</strong> ${ticket.email}</p>
+                        <p><strong>Quantity:</strong> ${ticket.quantity}</p>
+                        <p><strong>Total:</strong> $${ticket.price * ticket.quantity}</p>
+                        <button onclick="cancelTicket(${ticket.id})">Cancel</button>
+                    `;
+                    container.appendChild(ticketElement);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function cancelTicket(ticketId) {
+            try {
+                const response = await fetch(`/api/tickets/${ticketId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    alert('Ticket cancelled!');
+                    loadTickets();
+                } else {
+                    alert('Cancel failed.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Load tickets when page loads
+        loadTickets();
+    </script>
+
+    <footer style="text-align:center; margin-top:40px; color:#555;">
+        <p>Developed by <strong>Mohammed Maaz (mdmaaz304)</strong> | DevOps Assignment 2</p>
+    </footer>
+</body>
+</html>

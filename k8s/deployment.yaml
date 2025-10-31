@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticketbookingapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticketbookingapp
+  template:
+    metadata:
+      labels:
+        app: ticketbookingapp
+    spec:
+      containers:
+        - name: ticketbookingapp
+          image: mdmaaz304/devops_assignment2-app:latest  # your Docker image
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 10
