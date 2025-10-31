@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     echo "🛠 Building Docker Image..."
-                    docker.build("${DOCKER_IMAGE}", "./app")
+                    docker.build("${DOCKER_IMAGE}", ".")
                 }
             }
         }
