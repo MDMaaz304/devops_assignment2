@@ -13,7 +13,7 @@ db.sqlite3
 venv/
 env/
 ENV/
-.env        # environment variables file
+.env                # Environment variables file
 
 # ------------------------------
 # Docker related
@@ -59,3 +59,10 @@ build/
 # Kubernetes backups or temp
 # ------------------------------
 k8s/*.backup.yaml
+
+# ------------------------------
+# Custom local configurations
+# ------------------------------
+kubeconfig.yaml     # prevent uploading local kubeconfig
+*.crt
+*.key
