@@ -95,6 +95,7 @@ devops_assignment2/
 |--------------|-------------|
 | Jenkins Pipeline | ![Pipeline](./screenshots/jenkins-pipeline-configure.png) |
 | Docker Hub Repository | ![Docker Hub](./screenshots/dockerhub.png) |
+| GitHub Repo Structure | ![GitHub Repo](./screenshots/github-repo.png) |
 | Kubernetes Pods & Service | ![Kubernetes](./screenshots/kubernetes-pods.png) |
 | TicketEase Web Interface | ![App UI](./screenshots/applicationinterface1.png) |
 
