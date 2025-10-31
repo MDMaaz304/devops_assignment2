@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "mdmaaz304/devops_assignment2-app:latest"
+        docker_image = "mdmaaz304/devops_assignment2-app:latest"
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     echo "🛠 Building Docker Image..."
-                    docker.build("${DOCKER_IMAGE}", ".")
+                    docker.build("${docker_image}", ".")
                 }
             }
         }
@@ -28,20 +28,22 @@ pipeline {
                 script {
                     echo "📤 Pushing image to Docker Hub..."
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-cred') {
-                        docker.image("${DOCKER_IMAGE}").push()
+                        docker.image("${docker_image}").push()
                     }
                     echo "✅ Image pushed successfully!"
-                    bat 'docker rmi ${DOCKER_IMAGE} || echo "Image cleanup skipped on Windows"'
+                    bat 'docker rmi %docker_image% || echo "🧹 Image cleanup skipped on Windows"'
                 }
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
+                echo "🚀 Deploying to Kubernetes..."
                 bat '''
                 set KUBECONFIG=C:\\Users\\user\\.kube\\config
                 kubectl apply -f k8s\\deployment.yaml
                 kubectl apply -f k8s\\service.yaml
+                kubectl get pods -o wide
                 '''
             }
         }
