@@ -1,4 +1,4 @@
-# DevOps Assignment 2 – Ticket Booking Platform with CI/CD Pipeline
+# 🎟️ TicketEase – Automated Ticket Booking Platform with CI/CD Pipeline  
 
 ![Python](https://img.shields.io/badge/python-3.10+-blue)  
 ![Flask](https://img.shields.io/badge/flask-2.x-green)  
@@ -7,224 +7,158 @@
 ![Kubernetes](https://img.shields.io/badge/kubernetes-latest-lightblue)  
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-pipeline-red)
 
-A production-ready Flask web application for  ticket booking, with a complete DevOps workflow including Docker, Jenkins, and Kubernetes deployment.
+A fully automated **Flask-based ticket booking application**, demonstrating a complete **DevOps workflow** integrating **Docker**, **Jenkins**, and **Kubernetes (Minikube)**.  
 
 ---
 
-## Overview
+## 🌟 Overview  
 
-This project demonstrates a full DevOps workflow for a Flask web application, including:
-
-- Containerization using Docker  
-- Automated CI/CD pipeline with Jenkins  
-- Orchestration using Kubernetes  
-- Automated testing and deployment stages  
-
----
-
-
-
-## ✨ Features
-
-- **Flask Web Application**: Lightweight Python web server  
-- **Docker Containerization**: Multi-stage Docker builds for optimized image sizes  
-- **Kubernetes Deployment**: Production-ready manifests (deployments, services, load balancing)  
-- **Jenkins Pipeline**: Automates build, test, push, and deployment  
-- **Docker Hub Integration**: Automated image push to registry  
-- **Health Checks**: Application health monitoring  
-- **Load Balancing**: Kubernetes Service (LoadBalancer type) for external access  
+**TicketEase** is a sample production-ready ticket booking system designed to demonstrate automation in software delivery using DevOps tools.  
+The project showcases:  
+- Docker-based **containerization** of a Flask application  
+- A **CI/CD pipeline** built with Jenkins  
+- **Kubernetes**-based orchestration and deployment  
+- Seamless image publishing on **Docker Hub**  
 
 ---
 
-## Architecture
-          ┌──────────────────────────┐
-          │     GitHub Repo          │
-          │ heisenberg234web/ticketbookingapp-devops │
-          └───────────┬──────────────┘
-                      │
-                      ▼
-          ┌──────────────────────────┐
-          │        Jenkins           │
-          │   CI/CD Pipeline         │
-          └───────────┬──────────────┘
-                      │
-                      ▼
-          ┌──────────────────────────┐
-          │       Docker Hub         │
-          │  (TicketBookingApp Image)│
-          └───────────┬──────────────┘
-                      │
-                      ▼
-          ┌──────────────────────────┐
-          │   Kubernetes Cluster     │
-          │ (App Pods, Service, Ingress) │
-          └───────────┬──────────────┘
-                      │
-                      ▼
-          ┌──────────────────────────┐
-          │     End Users / Clients  │
-          │ (Access via LoadBalancer │
-          │     or NodePort URL)     │
-          └──────────────────────────┘
+## ✨ Features  
 
-This shows how code flows: from GitHub → CI/CD → image registry → Kubernetes → end-users.
+- **Flask Web Server:** Lightweight and easy to deploy Python backend  
+- **Dockerized Environment:** Simplifies deployment and dependency management  
+- **Jenkins Automation:** Push-button build → test → deploy workflow  
+- **Kubernetes Deployment:** Managed rollout and scaling with `deployment.yaml`  
+- **Health Checks:** Ensures application uptime and reliability  
+- **NodePort Exposure:** Access web app via Minikube service URL  
 
 ---
 
+## 🏗️ System Architecture  
 
-
+      ┌──────────────────────────┐
+      │     GitHub Repo          │
+      │ mdmaaz304/devops_assignment2 │
+      └───────────┬──────────────┘
+                  │
+                  ▼
+      ┌──────────────────────────┐
+      │        Jenkins           │
+      │     CI/CD Pipeline       │
+      └───────────┬──────────────┘
+                  │
+                  ▼
+      ┌──────────────────────────┐
+      │       Docker Hub         │
+      │  (TicketEase Image)      │
+      └───────────┬──────────────┘
+                  │
+                  ▼
+      ┌──────────────────────────┐
+      │   Kubernetes Cluster     │
+      │ (Pods + Service + Load)  │
+      └───────────┬──────────────┘
+                  │
+                  ▼
+      ┌──────────────────────────┐
+      │     End Users / Clients  │
+      │ (Access via NodePort)    │
+      └──────────────────────────┘
 
 ---
 
-## 📁 Project Structure
-```
-ticketbookingapp-devops/
+## 📁 Project Structure  
+
+devops_assignment2/
 │
-├── app/ # Flask web application code
-│ ├── static/ # CSS / JS / images
+├── app/ # Flask web application source
+│ ├── static/ # CSS, JS, images
 │ ├── templates/ # HTML templates
-│ ├── app.py # Main Flask entry point
-│ └── requirements.txt # Python dependencies
+│ ├── app.py # Main entry point
+│ └── requirements.txt # Dependencies
 │
 ├── Dockerfile # Docker build instructions
-├── Jenkinsfile # CI/CD pipeline definition
-├── .gitignore # Files to ignore
+├── Jenkinsfile # Jenkins CI/CD definition
+├── .gitignore # Ignored files
 │
-├── k8s/ # Kubernetes deployment files
-│ ├── deployment.yaml
-│ └── service.yaml
+├── k8s/
+│ ├── deployment.yaml # Kubernetes deployment
+│ └── service.yaml # Kubernetes service
 │
-├── screenshots/ # Screenshots for documentation
-└── README.md # This documentation file
-```
-...
+├── screenshots/ # Documentation screenshots
+└── README.md # Project documentation
 
-## 📸 Screenshots
+---
 
+## 📸 Screenshots  
 
-1. **Jenkins Pipeline Configuration**  
-   Jenkins job configuration showing Git repository integration and build triggers  
-   ![Jenkins Pipeline](https://github.com/heisenberg234web/ticketbookingapp-devops/blob/main/jenkinscicd.png))
+| Description | Screenshot |
+|--------------|-------------|
+| Jenkins Pipeline | ![Pipeline](./screenshots/jenkins-pipeline-configure.png) |
+| Docker Hub Repository | ![Docker Hub](./screenshots/dockerhub.png) |
+| Kubernetes Pods & Service | ![Kubernetes](./screenshots/kubernetes-pods.png) |
+| TicketEase Web Interface | ![App UI](./screenshots/applicationinterface1.png) |
 
-2. **Docker Hub Repository**  
-   Docker Hub repository showing the successfully pushed container image  
-   ![Docker Hub](https://github.com/heisenberg234web/ticketbookingapp-devops/blob/main/dockerhub.png))
+*(Update the filenames according to your screenshots folder.)*
 
-3. **GitHub Repository Structure**  
-   Source code structure on GitHub showing the Flask application and configuration files  
-   ![GitHub Repo](https://github.com/heisenberg234web/ticketbookingapp-devops/blob/main/Screenshot%202025-10-26%20131847.png))
+---
 
-4. **Kubernetes Deployment**  
-   Kubernetes service deployment using Minikube with accessible service URL  
-   ![Kubernetes Deployment](https://github.com/heisenberg234web/ticketbookingapp-devops/blob/main/kubernetes.png))
+## 🐳 Docker Deployment  
 
-5. **Jenkins Pipeline Execution**  
-   Successful Jenkins pipeline execution with all stages completed  
-   ![Pipeline Execution](https://github.com/heisenberg234web/ticketbookingapp-devops/blob/main/jenkinspipeline.png))
+bash
+# 🧱 Build Docker Image
+docker build -t mdmaaz304/devops_assignment2-app:latest .
 
-6. **Application Website**  
-    Application  booking options  
-   ![Application Homepage](https://github.com/heisenberg234web/ticketbookingapp-devops/blob/main/application.png))
+# 🚀 Run Locally
+docker run -d -p 5000:5000 mdmaaz304/devops_assignment2-app:latest
 
+##Push to Docker Hub
 
+# 🏷️ Tag Docker Image
+docker tag mdmaaz304/devops_assignment2-app:latest mdmaaz304/devops_assignment2-app:latest
 
+# 🔑 Login to Docker Hub
+docker login
 
-## 📁 Docker Deployment
-```
+# 📤 Push Image
+docker push mdmaaz304/devops_assignment2-app:latest
 
-├── 🧱 Build the Docker Image  
-│   └── `docker build -t heisenberg234web/ticketbookingapp-devops:latest .`  
-│
-└── 🚀 Run the Container Locally  
-    └── `docker run -d -p 5000:5000 heisenberg234web/ticketbookingapp-devops:latest`
-```
+##Kubernetes Deployment
+# 🟢 Start Minikube
+minikube start
 
+# 📄 Apply Deployment and Service
+kubectl apply -f k8s/
 
+# 🔍 Check Status
+kubectl get pods
+kubectl get svc
 
-## 📁 Push to Docker Hub
-```
+# 🌐 Access Application
+minikube service ticketbooking-service
+ 
+## CI/CD pipeline flow
+1️⃣ Code Checkout → Jenkins pulls from GitHub  
+2️⃣ Docker Build → Jenkins builds image from Dockerfile  
+3️⃣ Push → Jenkins uploads image to Docker Hub  
+4️⃣ Deploy → Jenkins deploys via kubectl to Minikube  
+5️⃣ Verify → Pods and Services running successfully
 
-├── 🏷️ Tag Docker Image  
-│   └── `docker tag heisenberg234web/ticketbookingapp-devops:latest <your-dockerhub-username>/ticketbookingapp-devops:latest`  
-│
-├── 🔑 Login to Docker Hub  
-│   └── `docker login`  
-│
-└── 📤 Push Docker Image  
-    └── `docker push <your-dockerhub-username>/ticketbookingapp-devops:latest`
-```
+## Jenkins setup
+1️⃣ Install Plugins → Docker Pipeline, Git, Kubernetes CLI  
+2️⃣ Add Credentials → Docker Hub access token  
+3️⃣ Create Pipeline → Link to your GitHub repository  
+4️⃣ Run Job → Observe automated build, push, and deploy stages  
 
+## Author
+Author: Mohammed Maaz  
+GitHub: https://github.com/mdmaaz304  
+Docker Hub: https://hub.docker.com/u/mdmaaz304  
 
-## 📁 Kubernetes Deployment
-```
+Contributions:
+✔ Developed Flask application  
+✔ Created Dockerfile and Jenkinsfile  
+✔ Configured CI/CD automation using Jenkins  
+✔ Deployed app to Kubernetes (Minikube)  
+✔ Added project documentation and screenshots  
 
-├── 🟢 Start Minikube (local testing)  
-│   └── `minikube start`  
-│
-├── 📄 Apply Kubernetes Manifests  
-│   └── `kubectl apply -f k8s/`  
-│
-├── 🔍 Check Deployment Status  
-│   ├── `kubectl get pods`  
-│   └── `kubectl get services`  
-│
-├── 📈 Scale Deployment (optional)  
-│   └── `kubectl scale deployment ticket-booking-app --replicas=3`  
-│
-└── 🗑️ Clean Up  
-    └── `kubectl delete -f k8s/`
-```
-
-## 📁 CI/CD Pipeline
-```
-
-├── 1️⃣ Checkout Code  
-│   └── Clone the latest code from GitHub repository  
-│
-├── 2️⃣ Build Docker Image  
-│   └── Build using Dockerfile  
-│
-├── 3️⃣ Run Tests  
-│   └── Run automated tests or health-check scripts  
-│
-├── 4️⃣ Push to Docker Registry  
-│   └── Push built image to Docker Hub  
-│
-└── 5️⃣ Deploy to Kubernetes  
-    └── Apply manifests to update application deployment
-```
-
-## 📁 Jenkins Setup
-```
-
-├── ⚙️ Install Jenkins and Required Plugins  
-│   └── Docker Pipeline, Kubernetes CLI, Git  
-│
-├── 🔑 Configure Credentials  
-│   ├── Docker registry credentials  
-│   └── Kubernetes config (if required)  
-│
-├── 🏗️ Create Pipeline Job  
-│   └── Point to GitHub repository + Jenkinsfile  
-│
-└── ▶️ Run Pipeline  
-    └── Monitor stages and logs for build, test, push, deployment
-```
-👤 Author & Contributions
-```
-├── Author: Maheshwaram Sai Ruthwik
-├── GitHub: https://github.com/heisenberg234web
-├── Docker Hub: https://hub.docker.com/u/heisenberg123
-│
-├── Contributions:
-│   ├── Developed the Flask web application
-│   ├── Created Dockerfile and containerized the application
-│   ├── Set up Jenkins CI/CD pipeline
-│   ├── Wrote Kubernetes manifests for deployment and service
-│   ├── Added documentation and screenshots for README
-│   └── Ensured end-to-end DevOps workflow from code to deployment
-```
-
-
-
-
+ 
