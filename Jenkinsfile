@@ -31,7 +31,7 @@ pipeline {
                         docker.image("${DOCKER_IMAGE}").push()
                     }
                     echo "✅ Image pushed successfully!"
-                    sh 'docker rmi ${DOCKER_IMAGE} || echo "Image cleanup skipped on Windows"'
+                    bat 'docker rmi ${DOCKER_IMAGE} || echo "Image cleanup skipped on Windows"'
                 }
             }
         }
